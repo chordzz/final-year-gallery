@@ -41,7 +41,6 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
           setHasInteracted(true);
           onMusicStarted?.();
         }).catch((error) => {
-          console.log('Failed to start music:', error);
           // If autoplay fails, we'll wait for the next user interaction
         });
       };
@@ -58,7 +57,6 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
 
   const playNextSong = () => {
     const nextIndex = (currentSongIndex + 1) % audioSrcs.length;
-    console.log(`Transitioning from song ${currentSongIndex + 1} to song ${nextIndex + 1}`);
     
     const audio = audioRef.current;
     if (audio) {
@@ -76,9 +74,7 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
       if (wasPlaying) {
         const playAudio = () => {
           audio.play().then(() => {
-            console.log(`Successfully started song ${nextIndex + 1}`);
           }).catch((error) => {
-            console.log('Failed to play next song:', error);
             setIsPlaying(false);
           });
         };
@@ -115,9 +111,7 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
         if (wasPlaying) {
           const playAudio = () => {
             audio.play().then(() => {
-              console.log(`Successfully shuffled to song ${newIndex + 1}`);
             }).catch((error) => {
-              console.log('Failed to shuffle to new song:', error);
               setIsPlaying(false);
             });
           };
@@ -163,7 +157,6 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
     const handleEnded = () => {
-      console.log('Song ended, playing next song...');
       // When song ends, play the next song
       playNextSong();
     };
