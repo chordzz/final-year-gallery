@@ -2,7 +2,6 @@
 import React, { useState, useRef } from 'react';
 import GallerySection from '../components/GallerySection';
 import StickyNavigation from '../components/StickyNavigation';
-import ScrollToTop from '../components/ScrollToTop';
 import DoodleBackground from '../components/DoodleBackground';
 import ImagePreloader from '../components/ImagePreloader';
 import MusicPlayer, { MusicPlayerRef } from '../components/MusicPlayer';
@@ -69,13 +68,11 @@ export default function Home() {
 
   // Music prompt state
   const [showMusicPrompt, setShowMusicPrompt] = useState(true);
-  const [musicStarted, setMusicStarted] = useState(false);
   const [loaderComplete, setLoaderComplete] = useState(false);
   const musicPlayerRef = useRef<MusicPlayerRef>(null);
 
   const handleStartMusic = () => {
     musicPlayerRef.current?.startMusic();
-    setMusicStarted(true);
     setShowMusicPrompt(false);
   };
 
@@ -163,8 +160,8 @@ export default function Home() {
                 Thank You for the Memories 💝
               </h3>
               <p className="text-gray-700 text-lg sm:text-xl gallery-subtitle mb-8 sm:mb-10">
-                This gallery represents more than just photos - it's a collection of friendships, 
-                laughter, and the bonds you've built throughout your university journey. 🤗💫
+                This gallery represents more than just photos - it&apos;s a collection of friendships, 
+                laughter, and the bonds you&apos;ve built throughout your university journey. 🤗💫
               </p>
               
               {/* Romantic closing elements */}
@@ -175,7 +172,7 @@ export default function Home() {
               </div>
               
               <p className="text-sm sm:text-base text-gray-600 italic font-handwriting">
-                "The best memories are made with the best people" ❤️
+                &ldquo;The best memories are made with the best people&rdquo; ❤️
               </p>
           </div>
         </section>
@@ -192,7 +189,7 @@ export default function Home() {
           "/audio/orente.mp3"
         ]}
         className="block"
-        onMusicStarted={() => setMusicStarted(true)}
+        onMusicStarted={() => {}}
         ref={musicPlayerRef}
       />
 

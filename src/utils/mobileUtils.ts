@@ -13,6 +13,15 @@ export interface DeviceCapabilities {
   connectionSpeed: 'slow' | 'fast' | 'unknown';
 }
 
+// Type definitions for better type safety
+interface NavigatorConnection {
+  effectiveType?: 'slow-2g' | '2g' | '3g' | '4g';
+}
+
+interface ExtendedNavigator extends Navigator {
+  connection?: NavigatorConnection;
+}
+
 // Detect if device supports touch
 export const hasTouchSupport = (): boolean => {
   if (typeof window === 'undefined') return false;
@@ -35,7 +44,7 @@ export const prefersReducedMotion = (): boolean => {
 export const getConnectionSpeed = (): 'slow' | 'fast' | 'unknown' => {
   if (typeof navigator === 'undefined') return 'unknown';
   
-  const connection = (navigator as any).connection;
+  const connection = (navigator as ExtendedNavigator).connection;
   if (!connection) return 'unknown';
   
   const effectiveType = connection.effectiveType;
@@ -284,7 +293,7 @@ export const smoothScrollTo = (element: HTMLElement, offset: number = 0) => {
 };
 
 // Debounce utility for mobile performance
-export const debounce = <T extends (...args: any[]) => any>(
+export const debounce = <T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): ((...args: Parameters<T>) => void) => {
@@ -297,7 +306,7 @@ export const debounce = <T extends (...args: any[]) => any>(
 };
 
 // Throttle utility for mobile performance
-export const throttle = <T extends (...args: any[]) => any>(
+export const throttle = <T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): ((...args: Parameters<T>) => void) => {

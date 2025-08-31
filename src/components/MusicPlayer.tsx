@@ -40,7 +40,7 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
           setIsPlaying(true);
           setHasInteracted(true);
           onMusicStarted?.();
-        }).catch((error) => {
+        }).catch(() => {
           // If autoplay fails, we'll wait for the next user interaction
         });
       };
@@ -74,7 +74,7 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
       if (wasPlaying) {
         const playAudio = () => {
           audio.play().then(() => {
-          }).catch((error) => {
+          }).catch(() => {
             setIsPlaying(false);
           });
         };
@@ -111,7 +111,7 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
         if (wasPlaying) {
           const playAudio = () => {
             audio.play().then(() => {
-            }).catch((error) => {
+            }).catch(() => {
               setIsPlaying(false);
             });
           };
@@ -334,5 +334,7 @@ const MusicPlayer = forwardRef<MusicPlayerRef, MusicPlayerProps>(({ audioSrcs, c
     </>
   );
 });
+
+MusicPlayer.displayName = 'MusicPlayer';
 
 export default MusicPlayer;

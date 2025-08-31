@@ -1,8 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import PhotoCard from './PhotoCard';
-import MobilePhotoCard from './MobilePhotoCard';
 import Lightbox from './Lightbox';
 import MobileLightbox from './MobileLightbox';
 import AdvancedGridLayout, { LayoutType } from './AdvancedGridLayout';
@@ -40,28 +38,18 @@ const GallerySection: React.FC<GallerySectionProps> = ({
     
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Intersection observer for section animations
+  // Intersection observer for animations
   const { ref: sectionRef, hasIntersected: sectionVisible } = useIntersectionObserver({
     threshold: 0.1,
-    rootMargin: '50px',
-    triggerOnce: true
+    rootMargin: '0px 0px -50px 0px'
   });
 
   const handleImageClick = (index: number) => {
     setCurrentImageIndex(index);
     setLightboxOpen(true);
-  };
-
-  const handleLightboxClose = () => {
-    setLightboxOpen(false);
-  };
-
-  const handleNavigate = (index: number) => {
-    setCurrentImageIndex(index);
   };
 
   const handleLayoutChange = (layout: LayoutType) => {
@@ -163,10 +151,10 @@ const GallerySection: React.FC<GallerySectionProps> = ({
       <div className="hidden md:block">
         <Lightbox
           isOpen={lightboxOpen}
-          onClose={handleLightboxClose}
+          onClose={() => setLightboxOpen(false)}
           images={images}
           currentIndex={currentImageIndex}
-          onNavigate={handleNavigate}
+          onNavigate={setCurrentImageIndex}
           title={title}
         />
       </div>
@@ -175,10 +163,10 @@ const GallerySection: React.FC<GallerySectionProps> = ({
       <div className="md:hidden">
         <MobileLightbox
           isOpen={lightboxOpen}
-          onClose={handleLightboxClose}
+          onClose={() => setLightboxOpen(false)}
           images={images}
           currentIndex={currentImageIndex}
-          onNavigate={handleNavigate}
+          onNavigate={setCurrentImageIndex}
           title={title}
         />
       </div>

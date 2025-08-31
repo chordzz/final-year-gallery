@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PhotoCard from './PhotoCard';
 import MobilePhotoCard from './MobilePhotoCard';
 import MasonryLayout from './MasonryLayout';
-import LazyLoadImage from './LazyLoadImage';
+import { GridLayout } from '../utils/gridLayouts';
 
 export type LayoutType = 'grid' | 'masonry' | 'masonry-2' | 'masonry-3' | 'featured' | 'pinterest';
 
