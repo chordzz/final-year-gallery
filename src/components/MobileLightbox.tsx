@@ -175,9 +175,10 @@ const MobileLightbox: React.FC<MobileLightboxProps> = ({
       )}
 
       {/* Swipe hint */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white text-sm bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm opacity-50">
+      {/*<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white text-sm bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm opacity-50">
         Swipe to navigate
       </div>
+      */}
     </div>
   );
 };
