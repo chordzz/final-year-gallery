@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Final Year Week Gallery
+
+A playful, artsy website with a black and white base and colorful accents to showcase memories from a girlfriend's final year week at university.
 
 ## Getting Started
 
@@ -16,9 +18,37 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Black and white theme with colorful artsy accents
+- Day-by-day gallery structure for different themed days
+- Fluid animations and playful design elements
+- Responsive design for mobile and desktop viewing
+- Interactive elements and hover effects
+
+## Themed Days
+
+The gallery is organized around five themed days:
+
+1. **Corporate Day** - Professional attire and business-themed events
+2. **Denim Day** - Creative expressions with denim clothing
+3. **Jersey Day** - Sports enthusiasm and team spirit
+4. **Costume Day** - Characters from movies, books, and pop culture
+5. **Owambe Day** - Cultural celebration with traditional attire
+
+## Adding Your Own Photos
+
+To add your own photos to the gallery:
+
+1. Place your images in the `public` directory
+2. Update the image paths in the `days` array in `src/app/page.tsx`
+3. Uncomment the Image component in the PhotoCard component
+
+## Customization
+
+- Change colors in `src/app/globals.css` by modifying the CSS variables
+- Adjust animations by modifying the keyframes in `src/app/globals.css`
+- Add or remove themed days by updating the `days` array in `src/app/page.tsx`
 
 ## Learn More
 
